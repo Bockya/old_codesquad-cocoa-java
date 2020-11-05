@@ -1,7 +1,7 @@
 import java.util.Scanner;
-public class naming_indians {
-    public static Scanner sc=new Scanner(System.in);
-    public static void indianname(int year, int month, int day){
+public class Naming_Indians {
+    public Scanner sc=new Scanner(System.in);
+    public void indianname(int year, int month, int day){
         String[] indianYear={"말많은","푸른","적색","조용한","웅크린","백색","지혜로운","용감한"," 날카로운","욕심많은"};
         String[] indianMonth={"늑대","태양","양","매","황소","불꽃","나무","달빛","말","돼지","하늘","바람"};
         String[] indianDay={"와(과) 함께 춤을","의 기상","은(는) 그림자 속에","없습니다","없습니다","없습니다","의 환생","의 죽음","아래에서","(을) 보라",
@@ -9,27 +9,28 @@ public class naming_indians {
                 "의 고향","의 전사","은(는) 나의친구","의 노래","의 정령","의 파수꾼","의 악마","와(과)같은 사나이","를(을) 쓰러트린자","의 혼","은(는) 말이 없다"};
         System.out.println("당신의 이름은 "+indianYear[year]+' '+indianMonth[month]+indianDay[day]+"입니다.");
     }
-    public static int getyear(){
-        int year=sc.nextInt();
+    public int getyear(){
+        int year=this.sc.nextInt();
         year=year%10;
         return year;
     }
-    public static int getmonth(){
-        int month=sc.nextInt();
+    public int getmonth(){
+        int month=this.sc.nextInt();
         month--;
         return month;
     }
-    public static int getday(){
-        int day=sc.nextInt();
+    public int getday(){
+        int day=this.sc.nextInt();
         day--;
         return day;
     }
     public static void main(String[] args) {
+        Naming_Indians ni=new Naming_Indians();
         System.out.println("생년월일을 입력해 주세요>");
-        int year=getyear();
-        int month=getmonth();
-        int day=getday();
-        indianname(year,month,day);
+        int year=ni.getyear();
+        int month=ni.getmonth();
+        int day=ni.getday();
+        ni.indianname(year,month,day);
     }
 }
 
