@@ -4,7 +4,7 @@ public class multiplication_table {
     private int end;
     private boolean getInput(){
         Scanner sc = new Scanner(System.in); //system은 클래스
-        System.out.println("시작단과 끝단을 입력하세요: "); //out: static 개체, println: 메소드
+        System.out.println("시작단과 끝단(1~9)을 입력하세요: "); //out: static 개체, println: 메소드
         int start = sc.nextInt();
         int end = sc.nextInt();
         if(start < 1 || end > 9 || start > end){

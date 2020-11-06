@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Naming_Indians {
+public class NamingIndians {
     public Scanner sc=new Scanner(System.in);
     public void indianname(int year, int month, int day){
         String[] indianYear={"말많은","푸른","적색","조용한","웅크린","백색","지혜로운","용감한"," 날카로운","욕심많은"};
@@ -25,7 +25,7 @@ public class Naming_Indians {
         return day;
     }
     public static void main(String[] args) {
-        Naming_Indians ni=new Naming_Indians();
+        NamingIndians ni=new NamingIndians();
         System.out.println("생년월일을 입력해 주세요>");
         int year=ni.getyear();
         int month=ni.getmonth();
