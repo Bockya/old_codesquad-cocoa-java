@@ -82,7 +82,7 @@ public class HangeulClock {
                 result = h11;
                 break;
             case 12:
-            case 24:
+            case 0:
                 String[] h12 = {"□□□□□□",
                         "□□□□□□",
                         "□□열□두시"};
@@ -93,7 +93,7 @@ public class HangeulClock {
     }
 
     private String getHanTenMin(int minute) {
-        String result="";
+        String result = "";
         switch (minute / 10) {
             case 1:
                 String tm1 = "□□□□□십";
@@ -115,7 +115,7 @@ public class HangeulClock {
                 String tm5 = "□□□□오십";
                 result = tm5;
                 break;
-            case 0:
+            default:
                 String tm0 = "□□□□□□";
                 result = tm0;
                 break;
@@ -126,11 +126,6 @@ public class HangeulClock {
     private String[] getHanOneMin(int minute) {
         String[] result = new String[2];
         switch (minute % 10) {
-            case 0:
-                String[] om0 = {"□□□□□□",
-                        "□□□□□분"};
-                result = om0;
-                break;
             case 1:
                 String[] om1 = {"□일□□□□",
                         "□□□□□분"};
@@ -175,6 +170,18 @@ public class HangeulClock {
                 String[] om9 = {"□□□□□□",
                         "□□□□구분"};
                 result = om9;
+                break;
+            default:
+                if (minute / 10 == 0) {
+                    String[] om0 = {"□□□□□□",
+                            "□□□□□□"};
+                    result = om0;
+                } else {
+                    String[] om0 = {"□□□□□□",
+                            "□□□□□분"};
+                    result = om0;
+                }
+                break;
         }
         return result;
     }
@@ -190,33 +197,43 @@ public class HangeulClock {
         LocalTime now = LocalTime.now(); //현재 시간
         int hour = now.getHour(); //현재 시간에서 시(hour)만 뽑아낸다
         int minute = now.getMinute(); //현재 시간에서 분(minute)만 뽑아낸다
-        String si = hangeul[2].charAt(5) + ""; //시
-        String bun = hangeul[5].charAt(5) + ""; //분
-        String jajeong = hangeul[3].charAt(0) + "" + hangeul[4].charAt(0); //자정
-        String jeongo = hangeul[4].charAt(0) + "" + hangeul[5].charAt(0); //정오
-        String[] hanHour = {"한두세네다섯",
+
+        String[] hanHour = {"한두세네다섯", //한글 시간의 시
                 "여섯일곱여덟",
                 "아홉열한두시"};
-        String hanTenMinute = "자이삼사오십";
-        String[] hanOneMinute = {"정일이삼사육",
+        String hanTenMinute = "자이삼사오십"; //한글 시간의 10의 자리 분
+        String[] hanOneMinute = {"정일이삼사육", //한글 시간의 1의 자리 분
                 "오오칠팔구분"};
-        String[] result1 = hc.getHanHour(hour);
-        String result2 = hc.getHanTenMin(minute);
-        String[] result3 = hc.getHanOneMin(minute);
-
         System.out.println("now: " + now);
         System.out.println("hour: " + hour);
         System.out.println("minute: " + minute);
-        //System.out.println(si);
-        //System.out.println(bun);
-        //System.out.println(jajeong);
-        //System.out.println(jeongo);
-        //for (int i = 0; i < 6; i++)
-        //    System.out.println(hangeul[i]);
-        for (int i = 0; i < 3; i++)
-            System.out.println(result1[i]);
-        System.out.println(result2);
-        for (int i = 0; i < 2; i++)
-            System.out.println(result3[i]);
+        if (hour == 0 && minute == 0) {
+            String[] jajeong = {"□□□□□□",
+                    "□□□□□□",
+                    "□□□□□□",
+                    "자□□□□□",
+                    "정□□□□□",
+                    "□□□□□□"};
+            for (int i = 0; i < 6; i++)
+                System.out.println(jajeong[i]);
+        } else if (hour == 12 && minute == 0) {
+            String[] jeongo = {"□□□□□□",
+                    "□□□□□□",
+                    "□□□□□□",
+                    "□□□□□□",
+                    "정□□□□□",
+                    "오□□□□□"};
+            for (int i = 0; i < 6; i++)
+                System.out.println(jeongo[i]);
+        } else {
+            String[] result1 = hc.getHanHour(hour);
+            String result2 = hc.getHanTenMin(minute);
+            String[] result3 = hc.getHanOneMin(minute);
+            for (int i = 0; i < 3; i++)
+                System.out.println(result1[i]);
+            System.out.println(result2);
+            for (int i = 0; i < 2; i++)
+                System.out.println(result3[i]);
+        }
     }
 }
