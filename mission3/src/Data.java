@@ -3,35 +3,46 @@ public class Data {
     private String summary;
     private int income;
     private int expense;
-    public Data(){}
-    public Data(int date, String summary, int income, int expense){
+
+    public Data() {
+    }
+
+    public Data(int date, String summary, int income, int expense) {
         this.date = date;
-        this.summary =summary;
+        this.summary = summary;
         this.income = income;
         this.expense = expense;
     }
-    public int getDate(){
+
+    public int getDate() {
         return date;
     }
-    public void setDate(){
+
+    public void setDate() {
         this.date = date;
     }
-    public String getSummary(){
+
+    public String getSummary() {
         return summary;
     }
-    public void setSummary(){
+
+    public void setSummary() {
         this.summary = summary;
     }
-    public int getIncome(){
+
+    public int getIncome() {
         return income;
     }
-    public void setIncome(){
+
+    public void setIncome() {
         this.income = income;
     }
-    public int getExpense(){
+
+    public int getExpense() {
         return expense;
     }
-    public void setExpense(){
+
+    public void setExpense() {
         this.expense = expense;
     }
 }
