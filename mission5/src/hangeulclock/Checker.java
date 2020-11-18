@@ -3,7 +3,7 @@ package hangeulclock;
 public class Checker {
     boolean[][] checker = new boolean[6][6];
 
-    public Checker(Now t) {
+    public Checker(Time t) {
         if (t.hour == 0 && t.minute == 0) { //자정일 때
             isTwelveOClock(t);
             return;
@@ -17,7 +17,7 @@ public class Checker {
             checkMinute(t);
     }
 
-    public void isTwelveOClock(Now t) {
+    public void isTwelveOClock(Time t) {
         this.checker[4][0] = true; //'정'
         if (t.hour == 0 && t.minute == 0)
             this.checker[3][0] = true; //'자'
@@ -26,7 +26,7 @@ public class Checker {
         }
     }
 
-    public void checkHour(Now t) {
+    public void checkHour(Time t) {
         this.checker[2][5] = true; //'시'
         switch (t.hour) {
             case 1:
@@ -87,7 +87,7 @@ public class Checker {
         }
     }
 
-    public void checkMinute(Now t) {
+    public void checkMinute(Time t) {
         this.checker[5][5] = true; //'분'
         switch (t.minute % 10) { //한 자릿수
             case 1:
